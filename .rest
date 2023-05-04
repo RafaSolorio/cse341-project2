@@ -1,0 +1,13 @@
+### GET users
+GET http://localhost:5000/users HTTP/1.1
+
+### Create users
+POST http://localhost:5000/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "jake.bloom",
+  "email": "jake@mail.com",
+  "password": "p@ssw0rd1234",
+  "dateOfBirth": "2000-11-20"
+}
