@@ -11,3 +11,8 @@ Content-Type: application/json
   "password": "p@ssw0rd1234",
   "dateOfBirth": "2000-11-20"
 }
+
+# RENDER DEPLOY
+
+### GET users
+GET  https://cse341-project2-vjan.onrender.com/users
