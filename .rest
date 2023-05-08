@@ -52,16 +52,8 @@ Content-Type: application/json
 {
   "title": "Peanut Butter and Jelly Sandwich",
   "description": "A sandwich that's perfect for a quick and easy lunch.",
-  "ingredients": [
-     "2 slices of bread",
-     "2 tbsp peanut butter",
-     "2 tbsp jelly"
-  ],
-  "directions": [
-     "Spread peanut butter on one slice of bread.",
-     "Spread jelly on the other slice of bread.",
-     "Put the two slices of bread together, with the peanut butter and jelly sides facing each other."
-  ],
+  "ingredients": "2 slices of bread, 2 tbsp peanut butter, 2 tbsp jelly",
+  "directions": "Spread peanut butter on one slice of bread, spread jelly on the other slice of bread, put the two slices of bread together, with the peanut butter and jelly sides facing each other.",
   "prepTime": 5,
   "cookTime": 0,
   "servings": 1
@@ -74,16 +66,8 @@ Content-Type: application/json
 {
   "title": "PB&J Sandwich",
   "description": "A classic sandwich that's perfect for a quick and easy lunch.",
-  "ingredients": [
-     "2 slices of bread",
-     "3 tbsp peanut butter",
-     "3 tbsp jelly"
-  ],
-  "directions": [
-     "Spread peanut butter on one slice of bread.",
-     "Spread jelly on the other slice of bread.",
-     "Put the two slices of bread together, with the peanut butter and jelly sides facing each other."
-  ],
+  "ingredients": "2 slices of bread, 3 tbsp peanut butter, 3 tbsp jelly",
+  "directions": "Spread peanut butter on one slice of bread. Spread jelly on the other slice of bread. Put the two slices of bread together, with the peanut butter and jelly sides facing each other.",
   "prepTime": 5,
   "cookTime": 0,
   "servings": 1
