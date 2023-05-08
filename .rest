@@ -16,3 +16,78 @@ Content-Type: application/json
 
 ### GET users
 GET  https://cse341-project2-vjan.onrender.com/users
+
+### Create user
+POST https://cse341-project2-vjan.onrender.com/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "userName": "erick.jones",
+  "email": "jones@email.com",
+  "password": "12345678",
+  "dateOfBirth": "2002-07-14"
+}
+
+### Update User
+PUT https://cse341-project2-vjan.onrender.com/users/userId
+Content-Type: application/json
+
+{
+  "userName": "erick.jones",
+  "email": "erick@gmail.com",
+  "password": "1234567890",
+  "dateOfBirth": "2002-07-14"
+}
+
+### Delete user
+DELETE https://cse341-project2-vjan.onrender.com/users/userId
+
+### GET recipes
+GET  https://cse341-project2-vjan.onrender.com/recipes
+
+### Create recipe
+POST https://cse341-project2-vjan.onrender.com/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Peanut Butter and Jelly Sandwich",
+  "description": "A sandwich that's perfect for a quick and easy lunch.",
+  "ingredients": [
+     "2 slices of bread",
+     "2 tbsp peanut butter",
+     "2 tbsp jelly"
+  ],
+  "directions": [
+     "Spread peanut butter on one slice of bread.",
+     "Spread jelly on the other slice of bread.",
+     "Put the two slices of bread together, with the peanut butter and jelly sides facing each other."
+  ],
+  "prepTime": 5,
+  "cookTime": 0,
+  "servings": 1
+}
+
+### Update recipe
+PUT https://cse341-project2-vjan.onrender.com/recipes/recipeId
+Content-Type: application/json
+
+{
+  "title": "PB&J Sandwich",
+  "description": "A classic sandwich that's perfect for a quick and easy lunch.",
+  "ingredients": [
+     "2 slices of bread",
+     "3 tbsp peanut butter",
+     "3 tbsp jelly"
+  ],
+  "directions": [
+     "Spread peanut butter on one slice of bread.",
+     "Spread jelly on the other slice of bread.",
+     "Put the two slices of bread together, with the peanut butter and jelly sides facing each other."
+  ],
+  "prepTime": 5,
+  "cookTime": 0,
+  "servings": 1
+}
+
+### Delete contact
+DELETE https://cse341-project2-vjan.onrender.com/recipes/recipeId

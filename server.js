@@ -19,6 +19,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
     })
     .use('/', require('./routes'))
 
+process.on('uncaughtException', (err, origin) => {
+    // eslint-disable-next-line no-console
+    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+})
+
 mongodb.initDb((err, mongodb) => {
     if (err) {
         console.log(err)
