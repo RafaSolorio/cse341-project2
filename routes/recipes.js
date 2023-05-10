@@ -5,8 +5,11 @@ const validation = require('../middleware/validate')
 const router = express.Router()
 
 
-///return all of the documents in recipes collection.
+///return all of the documents in Recipes collection.
 router.get('/', myController.getRecipes)
+
+// return a single document from Recipes collection by id
+router.get('/:id', myController.getRecipeById)
 
 // POST route to create a new recipe
 router.post('/', validation.saveRecipe, myController.createRecipe)

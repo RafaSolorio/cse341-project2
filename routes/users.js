@@ -5,8 +5,11 @@ const validation = require('../middleware/validate')
 const router = express.Router()
 
 
-//return all of the documents in users collection.
+// return all of the documents in Users collection.
 router.get('/', myController.getUsers)
+
+// return a single document from Users collection by id
+router.get('/:id', myController.getUserById)
 
 // POST route to create a new user
 router.post('/', validation.saveUser, myController.createUser)

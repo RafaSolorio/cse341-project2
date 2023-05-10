@@ -9,6 +9,26 @@ const getUsers = async (req, res, next) => {
     })
 }
 
+const getUserById = (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid user id to find a user.');
+    }
+
+    const userId = new ObjectId(req.params.id)
+    mongodb
+        .getDb()
+        .db()
+        .collection('users')
+        .find({ _id: userId })
+        .toArray((err, result) => {
+            if (err) {
+                res.status(400).json({ message: err});
+            }
+            res.setHeader('Content-Type', 'application/json')
+            res.status(200).json(result);
+        });
+}
+
 const createUser = async (req, res, next) => {
     try {
         const collection = mongodb.getDb().db().collection('users')
@@ -97,6 +117,26 @@ const getRecipes = async (req, res, next) => {
     })
 }
 
+const getRecipeById = (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid recipe id to find a recipe.');
+    }
+
+    const recipeId = new ObjectId(req.params.id)
+    mongodb
+        .getDb()
+        .db()
+        .collection('recipes')
+        .find({ _id: recipeId })
+        .toArray((err, result) => {
+            if (err) {
+                res.status(400).json({ message: err});
+            }
+            res.setHeader('Content-Type', 'application/json')
+            res.status(200).json(result);
+        });
+}
+
 const createRecipe = async (req, res, next) => {
     try {
         const collection = mongodb.getDb().db().collection('recipes')
@@ -173,7 +213,9 @@ const deleteRecipe = async (req, res) => {
 
 module.exports = {
     getUsers,
+    getUserById,
     getRecipes,
+    getRecipeById,
     createUser,
     updateUser,
     deleteUser,
