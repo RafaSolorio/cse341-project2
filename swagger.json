@@ -13,6 +13,7 @@
   "paths": {
     "/users/": {
       "get": {
+        "summary": "Get all the users",
         "description": "",
         "produces": [
           "application/json"
@@ -25,6 +26,7 @@
         }
       },
       "post": {
+        "summary": "Create a new user",
         "description": "",
         "parameters": [
           {
@@ -64,6 +66,7 @@
     },
     "/users/{id}": {
       "get": {
+        "summary": "Get a user by Id",
         "description": "",
         "produces": [
           "application/json"
@@ -86,6 +89,7 @@
         }
       },
       "put": {
+        "summary": "Update a user",
         "description": "",
         "parameters": [
           {
@@ -135,6 +139,7 @@
         }
       },
       "delete": {
+        "summary": "Delete a user",
         "description": "",
         "parameters": [
           {
@@ -162,6 +167,7 @@
     },
     "/recipes/": {
       "get": {
+        "summary": "Get all the recipes",
         "description": "",
         "produces": [
           "application/json"
@@ -177,6 +183,7 @@
         }
       },
       "post": {
+        "summary": "Create a new recipe",
         "description": "",
         "parameters": [
           {
@@ -225,6 +232,7 @@
     },
     "/recipes/{id}": {
       "get": {
+        "summary": "Get a recipe by Id",
         "description": "",
         "produces": [
           "application/json"
@@ -247,6 +255,7 @@
         }
       },
       "put": {
+        "summary": "Update a recipe",
         "description": "",
         "parameters": [
           {
@@ -305,6 +314,7 @@
         }
       },
       "delete": {
+        "summary": "Delete a recipe",
         "description": "",
         "parameters": [
           {
