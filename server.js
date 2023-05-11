@@ -18,6 +18,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
         next()
     })
     .use('/', require('./routes'))
+    
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok' });
+  });
 
 process.on('uncaughtException', (err, origin) => {
     // eslint-disable-next-line no-console
