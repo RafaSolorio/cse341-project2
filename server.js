@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const dotenv = require("dotenv").config()
 const MongoClient = require('mongodb').MongoClient
 const mongodb = require('./db/connect')
 const passport = require('passport')
@@ -27,7 +28,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader(
             "Access-Control-Allow-Headers",
-            "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorizacion"
+            "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization"
         );
         res.setHeader(
             "Access-Control-Allow-Methods",
@@ -45,33 +46,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
         callbackURL: process.env.CALLBACK_URL
     },
     function(accessToken, refreshToken, profile, done){
-        mongodb.getConnection((err, client) => {
-            if (err) {
-                console.log(err);
-                return done(err);
-            }
-    
-            const collection = client.db().collection('users');
-            const newUser = {
-                githubId: profile.id,
-                displayName: profile.displayName,
-                email: profile.emails[0].value
-            };
-    
-            try {
-                collection.insertOne(newUser, (err, result) => {
-                    if (err) {
-                        console.log(err);
-                        return done(err);
-                    }
-        
-                    return done(null, profile);
-                });
-            } catch (err) {
-                console.log(err);
-                return done(err);
-            }
-        });
+        return done(null, profile);
     }
 ));
 
@@ -90,10 +65,7 @@ app.get('/github/callback', passport.authenticate('github', {
         req.session.user = req.user;
         res.redirect('/');
     });
-  
-app.get('/health', (req, res) => {
-    res.json({ status: 'ok' });
-  });
+
 
 process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);

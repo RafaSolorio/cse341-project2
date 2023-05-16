@@ -15,5 +15,9 @@ routes.get('/logout', function(req, res, next){
     });
 });
 
+routes.get('/health', (req, res) => {
+    res.json({ status: 'ok' });
+});
+
 
 module.exports = routes
