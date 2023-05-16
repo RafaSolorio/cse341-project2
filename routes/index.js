@@ -17,9 +17,9 @@ routes.get('/logout', function(req, res, next){
 });
 
 // Ruta para manejar el callback de la autenticación de GitHub
-routes.get('/github/callback', authController.handleCallback);
-routes.get('/', (req, res) => {
-    res.send(req.session.user != undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")
-});
+//routes.get('/github/callback', authController.handleCallback);
+//routes.get('/', (req, res) => {
+//    res.send(req.session.user != undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")
+//});
 
 module.exports = routes
