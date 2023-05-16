@@ -45,7 +45,28 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
         callbackURL: process.env.CALLBACK_URL
     },
     function(accessToken, refreshToken, profile, done){
-        return done(null, profile);
+        mongodb.getConnection((err, client) => {
+            if (err) {
+                console.log(err);
+                return done(err);
+            }
+    
+            const collection = client.db().collection('users');
+            const newUser = {
+                githubId: profile.id,
+                displayName: profile.displayName,
+                email: profile.emails[0].value
+            };
+    
+            collection.insertOne(newUser, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    return done(err);
+                }
+    
+                return done(null, profile);
+            });
+        });
     }
 ));
 
