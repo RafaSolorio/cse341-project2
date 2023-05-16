@@ -45,28 +45,25 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 passport.serializeUser((user, done) => {
     done(null, user);
-})
+});
 passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-app.get('/', (req, res) => {
-    res.send(req.session.user != undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")
-});
+app.get('/', (req, res) => { res.send(req.session.user != undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")});
+
 app.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs', session: false}),
     (req, res) => {
         req.session.user = req.user;
         res.redirect('/');
-    }
-)
+    });
   
 app.get('/health', (req, res) => {
     res.json({ status: 'ok' });
   });
 
 process.on('uncaughtException', (err, origin) => {
-    // eslint-disable-next-line no-console
     console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
 })
 
