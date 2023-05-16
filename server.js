@@ -58,14 +58,19 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
                 email: profile.emails[0].value
             };
     
-            collection.insertOne(newUser, (err, result) => {
-                if (err) {
-                    console.log(err);
-                    return done(err);
-                }
-    
-                return done(null, profile);
-            });
+            try {
+                collection.insertOne(newUser, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                        return done(err);
+                    }
+        
+                    return done(null, profile);
+                });
+            } catch (err) {
+                console.log(err);
+                return done(err);
+            }
         });
     }
 ));
