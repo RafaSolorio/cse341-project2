@@ -1,10 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const dotenv = require("dotenv").config()
+const session = require('express-session')
 const MongoClient = require('mongodb').MongoClient
 const mongodb = require('./db/connect')
 const passport = require('passport')
-const session = require('express-session')
 const GitHubStrategy = require('passport-github2').Strategy
 const cors = require('cors')
 
@@ -57,12 +57,8 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-app.get('/', (req, res) => { 
-    const response = req.session.user != undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out";
-    res.send(response);
-    if (req.session.user) {
-        res.json(req.session.user);
-    }
+app.get('/', (req, res) => {
+    res.send(req.session.user != undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")
 });
     
 
