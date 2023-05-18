@@ -1,5 +1,6 @@
 const mongodb = require('../db/connect')
 const ObjectId = require('mongodb').ObjectId
+const bcrypt = require('bcrypt');
 
 const getUsers = async (req, res, next) => {
     const result = await mongodb.getDb().db().collection('users').find()
@@ -36,7 +37,7 @@ const createUser = async (req, res, next) => {
         const newUser = {
             userName: req.body.userName,
             email: req.body.email,
-            password: req.body.password,
+            password: await bcrypt.hash(req.body.password, 10),
             dateOfBirth: req.body.dateOfBirth,
         }
 
